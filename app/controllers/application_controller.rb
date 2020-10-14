@@ -19,7 +19,7 @@ class ApplicationController < Sinatra::Base
   end
   
   post '/articles' do 
-    @article = Article.new(params)
+    @article = Article.new(@title, @content)
     @id = params[:id]
     @title = params[:title]
     @content = params[:content]
@@ -31,7 +31,7 @@ class ApplicationController < Sinatra::Base
   end
   
   get '/articles/:id' do 
-    @id = params["id"]
+    @id = params[:id]
     @article = @artcles[@id]
     erb :show
   end
